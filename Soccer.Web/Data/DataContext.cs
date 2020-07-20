@@ -1,14 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Soccer.Web.Data.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Soccer.Web.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<UserEntity>
     {
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
         }
+
+        public DbSet<PredictionEntity> Predictions { get; set; }
 
         public DbSet<GroupDetailEntity> GroupDetails { get; set; }
 
